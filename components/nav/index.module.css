@@ -1,0 +1,21 @@
+.container {
+  box-shadow: var(--shadow-extra-small);
+  padding: 0 var(--sp-4x);
+  background: var(--accents-1);
+  height: var(--nav-height);
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+.flex,
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-2x);
+}
+
+.container h1 {
+  font-size: 24px;
+}

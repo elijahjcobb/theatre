@@ -1,0 +1,83 @@
+:root {
+  font-size: 16px;
+  --sp: 4px;
+  --sp-2x: 8px;
+  --sp-4x: 16px;
+  --sp-8x: 32px;
+  --sp-16x: 64px;
+  --sp-24x: 96px;
+  --sp-32x: 128px;
+  --sp-48x: 192px;
+  --sp-64x: 256px;
+  --sp-small: 32px;
+  --sp-medium: 40px;
+  --sp-large: 48px;
+  --success-lighter: #d3e5ff;
+  --success-light: #3291ff;
+  --success: #0070f3;
+  --success-dark: #0761d1;
+  --error-lighter: #f7d4d6;
+  --error-light: #ff1a1a;
+  --error: #e00;
+  --error-dark: #c50000;
+  --warning-lighter: #ffefcf;
+  --warning-light: #f7b955;
+  --warning: #f5a623;
+  --warning-dark: #ab570a;
+  --violet-lighter: #d8ccf1;
+  --violet-light: #8a63d2;
+  --violet: #7928ca;
+  --violet-dark: #4c2889;
+  --background-rgb: 255, 255, 255;
+  --foreground-rgb: 0, 0, 0;
+  --console-header: #efe7ed;
+  --console-purple: #7928ca;
+  --console-text-color-default: var(--foreground);
+  --console-text-color-blue: #0070f3;
+  --console-text-color-pink: #eb367f;
+  --console-text-color-purple: #7928ca;
+  --cyan-lighter: #aaffec;
+  --cyan-light: #79ffe1;
+  --cyan: #50e3c2;
+  --cyan-dark: #29bc9b;
+  --highlight-purple: #f81ce5;
+  --highlight-magenta: #eb367f;
+  --highlight-pink: #ff0080;
+  --highlight-yellow: #fff500;
+  --foreground: #000;
+  --background: #fff;
+  --accents-1: #fafafa;
+  --accents-2: #eaeaea;
+  --accents-3: #ddd;
+  --accents-4: #999;
+  --accents-5: #777;
+  --accents-6: #444;
+  --accents-7: #333;
+  --accents-8: #111;
+  --shadow-smallest: 0px 2px 4px rgba(var(--foreground-rgb), 0.1);
+  --shadow-extra-small: 0px 4px 8px rgba(var(--foreground-rgb), 0.12);
+  --shadow-small: 0 5px 10px rgba(var(--foreground-rgb), 0.12);
+  --shadow-medium: 0 8px 30px rgba(var(--foreground-rgb), 0.12);
+  --shadow-large: 0 30px 60px rgba(var(--foreground-rgb), 0.12);
+  --shadow-hover: 0 30px 60px rgba(var(--foreground-rgb), 0.12);
+  --font: "Rubik", sans-serif;
+  --font-mono: "Roboto Mono", monospace;
+  --nav-height: 48px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground: #fff;
+    --background: #000;
+    --accents-1: #0a0a0a;
+    --accents-2: #1a1a1a;
+    --accents-3: #222;
+    --accents-4: #333;
+    --accents-5: #444;
+    --accents-6: #666;
+    --accents-7: #999;
+    --accents-8: #bbb;
+    --background-rgb: 0, 0, 0;
+    --foreground-rgb: 255, 255, 255;
+  }
+}

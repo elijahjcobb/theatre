@@ -1,0 +1,44 @@
+.container {
+  background: var(--accents-1);
+  box-shadow: var(--shadow-medium);
+  border-radius: var(--sp-2x);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 2 / 1;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: none;
+  outline: none;
+}
+
+.icon,
+.add {
+  --size: 84px;
+  width: var(--size);
+  height: var(--size);
+  color: var(--foreground);
+}
+
+.add {
+  color: var(--accents-3);
+}
+
+.name {
+  font-size: 3em;
+}
+
+.deleteButton {
+  position: absolute;
+  top: var(--sp-4x);
+  right: var(--sp-4x);
+  outline: none;
+  border: none;
+  background: none;
+  padding: var(--sp-2x);
+}
+
+.deleteIcon {
+  color: var(--error);
+}

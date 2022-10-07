@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-auto-rows: 1fr;
+  padding: var(--sp-16x);
+  gap: var(--sp-16x);
+  flex-grow: 1;
+}
+
+@media (min-width: 1280px) {
+  .cards {
+    grid-template-columns: auto auto auto;
+  }
+}

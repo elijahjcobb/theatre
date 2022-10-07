@@ -2,9 +2,8 @@ import { IconType } from "react-icons";
 import { Card } from "../card";
 import { Nav } from "../nav";
 import styles from "./index.module.css";
-import { SiHbo, SiNetflix, SiYoutube, SiHulu, SiPrimevideo, SiAppletv } from "react-icons/si";
 import { AddCard } from "../card/add-card";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { Modal } from "../modal";
 
@@ -12,48 +11,62 @@ import { Modal } from "../modal";
 export interface Item {
 	name: string;
 	href: string;
-	icon?: IconType;
 }
 
 const DEFAULT_ITEMS: Item[] = [
 	{
 		name: "HBO Max",
 		href: "https://hbomax.com",
-		icon: SiHbo
 	},
 	{
 		name: "Netflix",
 		href: "https://netflix.com",
-		icon: SiNetflix
 	},
 	{
 		name: "YouTube",
 		href: "https://youtube.com",
-		icon: SiYoutube
 	},
 	{
 		name: "Hulu",
 		href: "https://hulu.com",
-		icon: SiHulu
 	},
 	{
 		name: "Prime Video",
 		href: "https://primevideo.com",
-		icon: SiPrimevideo
 	},
 	{
 		name: "Apple TV+",
 		href: "https://tv.apple.com",
-		icon: SiAppletv
 	}
 ]
 
+function setStorageItems(items: Item[]): void {
+	sessionStorage.setItem("items", JSON.stringify(items));
+}
+
+function getStorageItems(): Item[] {
+	return JSON.parse(sessionStorage.getItem("items") ?? "[]") as Item[];
+}
+
 export function HomePage() {
 
-	const [items, setItems] = useState<Item[]>(DEFAULT_ITEMS);
+	const [items, setItems] = useState<Item[]>([]);
 	const [showModal, setShowModal] = useState(false);
 	const [inDeleteMode, setInDeleteMode] = useState(false);
 	const [parent] = useAutoAnimate<HTMLDivElement>()
+
+	useEffect(() => {
+		let storage = getStorageItems();
+		if (storage.length === 0) {
+			storage = [...DEFAULT_ITEMS];
+			setStorageItems(storage);
+		}
+		setItems(storage);
+	}, []);
+
+	useEffect(() => {
+		setStorageItems(items);
+	}, [items]);
 
 	const handleAddCard = useCallback((item: Item) => {
 		setItems(v => [...v, item])

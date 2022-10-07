@@ -1,6 +1,9 @@
+import { useRouter } from "next/router";
+import { useCallback } from "react";
 import { FaTrash } from "react-icons/fa";
 import { Item } from "../home";
 import styles from "./index.module.css";
+
 
 export interface CardProps {
 	item: Item;
@@ -10,7 +13,13 @@ export interface CardProps {
 
 export function Card({ item, showDelete, onDelete }: CardProps) {
 	const { name, icon: Icon, href } = item;
-	return <button className={styles.container}>
+	const router = useRouter();
+
+	const handleClick = useCallback(() => {
+		router.push(href);
+	}, [href, router]);
+
+	return <button onClick={handleClick} className={styles.container}>
 		{Icon ? <Icon className={styles.icon} /> : <span className={styles.name}>{name}</span>}
 		{showDelete && <button onClick={ev => {
 			ev.stopPropagation();

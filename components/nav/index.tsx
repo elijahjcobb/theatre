@@ -18,11 +18,11 @@ export function Nav({ inDeleteMode, setInDeleteMode }: NavProps) {
 	return <div className={styles.container}>
 		<h1>theatre++</h1>
 		<div className={styles.flex}>
-			<button onClick={handleOnClick}>
-				{inDeleteMode ? <span>Done</span> : <FiEdit />}
+			<button className={styles.button} onClick={handleOnClick}>
+				{inDeleteMode ? <span>Done</span> : <span>Edit</span>}
 			</button>
-			<Link passHref href={`https://www.youtube.com/redirect?q=http://localhost:3000`}>
-				<a><BsFullscreen /></a>
+			<Link passHref href={`https://www.youtube.com/redirect?q=https://theatre-pp.vercel.app`}>
+				<a><BsFullscreen size={24} /></a>
 			</Link>
 		</div>
 	</div >

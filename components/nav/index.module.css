@@ -13,9 +13,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: var(--sp-2x);
+  gap: var(--sp-8x);
 }
 
 .container h1 {
   font-size: 24px;
+}
+
+.button {
+  background: none;
+  outline: none;
+  border: none;
+  font-weight: bold;
 }

@@ -6,6 +6,7 @@ import { SiHbo, SiNetflix, SiYoutube, SiHulu, SiPrimevideo, SiAppletv } from "re
 import { AddCard } from "../card/add-card";
 import { useCallback, useState } from "react";
 import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { Modal } from "../modal";
 
 
 export interface Item {
@@ -50,11 +51,13 @@ const DEFAULT_ITEMS: Item[] = [
 export function HomePage() {
 
 	const [items, setItems] = useState<Item[]>(DEFAULT_ITEMS);
+	const [showModal, setShowModal] = useState(false);
 	const [inDeleteMode, setInDeleteMode] = useState(false);
 	const [parent] = useAutoAnimate<HTMLDivElement>()
 
-	const handleAddCard = useCallback(() => {
-		setItems(v => [...v, { name: "Foo", href: "oewfij" }])
+	const handleAddCard = useCallback((item: Item) => {
+		setItems(v => [...v, item])
+		setShowModal(false);
 	}, []);
 
 	const handleDelete = useCallback((item: Item) => {
@@ -71,7 +74,11 @@ export function HomePage() {
 				onDelete={() => handleDelete(item)}
 				item={item}
 				key={item.href} />)}
-			<AddCard onClick={handleAddCard} />
+			<AddCard onClick={() => setShowModal(true)} />
 		</div>
+		<Modal
+			onCancel={() => setShowModal(false)}
+			onComplete={handleAddCard}
+			show={showModal} />
 	</div>
 } 

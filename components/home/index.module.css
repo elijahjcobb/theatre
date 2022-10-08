@@ -10,6 +10,12 @@
   padding: var(--sp-16x);
   gap: var(--sp-16x);
   flex-grow: 1;
+  opacity: 0;
+  transition: 250ms 250ms ease-in-out;
+}
+
+.animateIn {
+  opacity: 1;
 }
 
 @media (min-width: 1280px) {

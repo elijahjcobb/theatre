@@ -25,4 +25,5 @@
   outline: none;
   border: none;
   font-weight: bold;
+  color: var(--foreground);
 }

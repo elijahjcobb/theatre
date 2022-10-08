@@ -7,9 +7,10 @@ import { useCallback } from "react";
 export interface NavProps {
 	inDeleteMode: boolean;
 	setInDeleteMode: (value: boolean) => void;
+	setDefaults: () => void;
 }
 
-export function Nav({ inDeleteMode, setInDeleteMode }: NavProps) {
+export function Nav({ setDefaults, inDeleteMode, setInDeleteMode }: NavProps) {
 
 	const handleOnClick = useCallback(() => {
 		setInDeleteMode(!inDeleteMode)
@@ -18,10 +19,13 @@ export function Nav({ inDeleteMode, setInDeleteMode }: NavProps) {
 	return <div className={styles.container}>
 		<h1>theatre++</h1>
 		<div className={styles.flex}>
+			{inDeleteMode && <button className={styles.button} onClick={setDefaults}>
+				<span>Reset</span>
+			</button>}
 			<button className={styles.button} onClick={handleOnClick}>
 				{inDeleteMode ? <span>Done</span> : <span>Edit</span>}
 			</button>
-			<Link passHref href={`https://www.youtube.com/redirect?q=https://theatre-pp.vercel.app`}>
+			<Link passHref href={`https://www.youtube.com/redirect?q=https://theatre.elijahcobb.app`}>
 				<a><BsFullscreen size={24} /></a>
 			</Link>
 		</div>

@@ -69,15 +69,15 @@
   :root {
     --foreground: #fff;
     --background: #000;
-    --accents-1: #0a0a0a;
-    --accents-2: #1a1a1a;
-    --accents-3: #222;
-    --accents-4: #333;
-    --accents-5: #444;
+    --accents-1: #1a1a1a;
+    --accents-2: #2a2a2a;
+    --accents-3: #333;
+    --accents-4: #444;
+    --accents-5: #555;
     --accents-6: #666;
     --accents-7: #999;
     --accents-8: #bbb;
     --background-rgb: 0, 0, 0;
-    --foreground-rgb: 255, 255, 255;
+    --foreground-rgb: 200, 200, 200;
   }
 }

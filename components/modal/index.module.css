@@ -1,7 +1,7 @@
 .outer {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 5;
@@ -30,7 +30,7 @@
 .field {
   position: relative;
   padding: var(--sp-4x);
-  border: solid 1px var(--accents-2);
+  border: solid 1px var(--accents-3);
   border-radius: 8px;
 }
 
@@ -40,7 +40,7 @@
   left: 10px;
   background: var(--background);
   padding: 0 4px;
-  color: var(--accents-4);
+  color: var(--accents-5);
   font-weight: lighter;
 }
 
@@ -49,6 +49,8 @@
   outline: none;
   font-size: 22px;
   font-family: var(--font-mono);
+  background: none;
+  color: var(--foreground);
 }
 
 .buttons {

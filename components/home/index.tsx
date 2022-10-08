@@ -6,7 +6,7 @@ import { AddCard } from "../card/add-card";
 import { useCallback, useEffect, useState } from "react";
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { Modal } from "../modal";
-
+import clsx from "clsx";
 
 export interface Item {
 	name: string;
@@ -15,16 +15,24 @@ export interface Item {
 
 const DEFAULT_ITEMS: Item[] = [
 	{
+		name: "PlugShare",
+		href: "https://www.plugshare.com/",
+	},
+	{
+		name: "ABRP",
+		href: "https://abetterrouteplanner.com/",
+	},
+	{
+		name: "YouTube",
+		href: "https://youtube.com",
+	},
+	{
 		name: "HBO Max",
 		href: "https://hbomax.com",
 	},
 	{
 		name: "Netflix",
 		href: "https://netflix.com",
-	},
-	{
-		name: "YouTube",
-		href: "https://youtube.com",
 	},
 	{
 		name: "Hulu",
@@ -37,15 +45,63 @@ const DEFAULT_ITEMS: Item[] = [
 	{
 		name: "Apple TV+",
 		href: "https://tv.apple.com",
+	},
+	{
+		name: "Twitter",
+		href: "https://twitter.com",
+	},
+	{
+		name: "Twitch",
+		href: "https://twitch.tv",
+	},
+	{
+		name: "Reddit",
+		href: "https://reddit.com",
+	},
+	{
+		name: "LinkedIn",
+		href: "https://linkedin.com",
+	},
+	{
+		name: "Google Maps",
+		href: "https://maps.google.com",
+	},
+	{
+		name: "Messenger",
+		href: "https://messenger.com",
+	},
+	{
+		name: "Apple Music",
+		href: "https://music.apple.com",
+	},
+	{
+		name: "Instagram",
+		href: "https://instagram.com",
+	},
+	{
+		name: "Facebook",
+		href: "https://facebook.com",
+	},
+	{
+		name: "Google News",
+		href: "https://news.google.com",
+	},
+	{
+		name: "Google Photos",
+		href: "https://photos.google.com",
+	},
+	{
+		name: "Tesla",
+		href: "https://https://www.tesla.com/findus",
 	}
 ]
 
 function setStorageItems(items: Item[]): void {
-	sessionStorage.setItem("items", JSON.stringify(items));
+	localStorage.setItem("items", JSON.stringify(items));
 }
 
 function getStorageItems(): Item[] {
-	return JSON.parse(sessionStorage.getItem("items") ?? "[]") as Item[];
+	return JSON.parse(localStorage.getItem("items") ?? "[]") as Item[];
 }
 
 export function HomePage() {
@@ -57,10 +113,7 @@ export function HomePage() {
 
 	useEffect(() => {
 		let storage = getStorageItems();
-		if (storage.length === 0) {
-			storage = [...DEFAULT_ITEMS];
-			setStorageItems(storage);
-		}
+		if (storage.length === 0) storage = [...DEFAULT_ITEMS];
 		setItems(storage);
 	}, []);
 
@@ -79,9 +132,13 @@ export function HomePage() {
 		})
 	}, []);
 
+	const handleReset = useCallback(() => {
+		setItems([...DEFAULT_ITEMS]);
+	}, []);
+
 	return <div className={styles.container}>
-		<Nav inDeleteMode={inDeleteMode} setInDeleteMode={setInDeleteMode} />
-		<div className={styles.cards} ref={parent}>
+		<Nav setDefaults={handleReset} inDeleteMode={inDeleteMode} setInDeleteMode={setInDeleteMode} />
+		<div className={clsx(styles.cards, items.length > 0 && styles.animateIn)} ref={parent}>
 			{items.map(item => <Card
 				showDelete={inDeleteMode}
 				onDelete={() => handleDelete(item)}

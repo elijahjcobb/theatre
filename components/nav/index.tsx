@@ -1,8 +1,9 @@
 import styles from "./index.module.css";
 import { BsFullscreen } from "react-icons/bs"
-import { FiEdit } from "react-icons/fi";
 import Link from "next/link";
-import { useCallback } from "react";
+import { KeyboardEvent, useCallback, useState } from "react";
+import { FaSearch } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 export interface NavProps {
 	inDeleteMode: boolean;
@@ -10,7 +11,25 @@ export interface NavProps {
 	setDefaults: () => void;
 }
 
+export function SearchBox() {
+
+	const [value, setValue] = useState("")
+	const router = useRouter();
+
+	const handleKeyPress = useCallback((ev: KeyboardEvent<HTMLInputElement>) => {
+		if (ev.key === "Enter") {
+			router.push(`https://www.google.com/search?q=${encodeURIComponent(value)}`)
+		}
+	}, [router, value]);
+
+	return <div className={styles.search}>
+		<FaSearch className={styles.searchIcon} />
+		<input onKeyDown={handleKeyPress} value={value} onChange={ev => setValue(ev.target.value)} placeholder="Search on Google..." />
+	</div>
+}
+
 export function Nav({ setDefaults, inDeleteMode, setInDeleteMode }: NavProps) {
+
 
 	const handleOnClick = useCallback(() => {
 		setInDeleteMode(!inDeleteMode)
@@ -18,6 +37,7 @@ export function Nav({ setDefaults, inDeleteMode, setInDeleteMode }: NavProps) {
 
 	return <div className={styles.container}>
 		<h1>theatre++</h1>
+		<SearchBox />
 		<div className={styles.flex}>
 			{inDeleteMode && <button className={styles.button} onClick={setDefaults}>
 				<span>Reset</span>

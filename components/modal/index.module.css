@@ -51,6 +51,7 @@
   font-family: var(--font-mono);
   background: none;
   color: var(--foreground);
+  width: 100%;
 }
 
 .buttons {

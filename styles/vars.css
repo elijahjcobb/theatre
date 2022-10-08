@@ -62,7 +62,7 @@
   --shadow-hover: 0 30px 60px rgba(var(--foreground-rgb), 0.12);
   --font: "Rubik", sans-serif;
   --font-mono: "Roboto Mono", monospace;
-  --nav-height: 48px;
+  --nav-height: 64px;
 }
 
 @media (prefers-color-scheme: dark) {

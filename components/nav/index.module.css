@@ -17,7 +17,7 @@
 }
 
 .container h1 {
-  font-size: 24px;
+  font-size: 2rem;
 }
 
 .button {
@@ -26,6 +26,7 @@
   border: none;
   font-weight: bold;
   color: var(--foreground);
+  font-size: 1em;
 }
 
 .search {
@@ -46,7 +47,7 @@
   outline: none;
   background: none;
   color: var(--foreground);
-  font-size: 18px;
+  font-size: 1em;
 }
 
 .searchIcon {
